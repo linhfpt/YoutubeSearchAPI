@@ -1,5 +1,6 @@
 const KEY1 = 'AIzaSyAIA3AAqtK1IuZ7x4FJtX_AavAzXREguhM';
 const KEY2 = 'AIzaSyAiVq8q1v8_Dw2O2jKrzQo9CXTOkoT8Cgk';
+const KEY = '';
 var pageTokenParam = "";
 var numbLoaded = 9;
 function showModal(videoID, itemTitle, itemDes) {
@@ -33,6 +34,11 @@ function youtubeSearchApi(keyword,pageTokenParam){
         },
         error: function () {
             alert("Có lỗi xảy ra");
+        }
+        statusCode: {
+            403: function (){
+                if
+            }
         }
     });
 };
