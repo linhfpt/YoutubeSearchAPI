@@ -1,6 +1,6 @@
 const KEY1 = 'AIzaSyAIA3AAqtK1IuZ7x4FJtX_AavAzXREguhM';
 const KEY2 = 'AIzaSyAiVq8q1v8_Dw2O2jKrzQo9CXTOkoT8Cgk';
-const KEY = '';
+var KEY = KEY1;
 var pageTokenParam = "";
 var numbLoaded = 9;
 function showModal(videoID, itemTitle, itemDes) {
@@ -12,7 +12,7 @@ function showModal(videoID, itemTitle, itemDes) {
 function youtubeSearchApi(keyword,pageTokenParam){
     $.ajax({
         method: "GET",
-        url: `https://content.googleapis.com/youtube/v3/search?q=${keyword}&type=video&maxResults=${numbLoaded}&part=snippet&key=${KEY1}&PageToken=${pageTokenParam}`,
+        url: `https://content.googleapis.com/youtube/v3/search?q=${keyword}&type=video&maxResults=${numbLoaded}&part=snippet&key=${KEY}&PageToken=${pageTokenParam}`,
         success: function (data) {
             console.log(data);
             var pageTokenParam = data.nextPageToken;
@@ -34,10 +34,11 @@ function youtubeSearchApi(keyword,pageTokenParam){
         },
         error: function () {
             alert("Có lỗi xảy ra");
-        }
+        },
         statusCode: {
             403: function (){
-                if
+                KEY = KEY2;
+                youtubeSearchApi();
             }
         }
     });
